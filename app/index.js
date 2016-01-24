@@ -12,6 +12,6 @@ describe('pouchdb', function () {
 
   benchmark('couchdb-local.dev');
 
-  // benchmark('couchdb-remote.dev');
+  benchmark('couchdb-remote.dev');
 
 });

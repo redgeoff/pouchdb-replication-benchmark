@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+# Change to script directory
+sd=`dirname $0`
+cd $sd
+
 # Update apt-get
 apt-get update -y
 
@@ -28,7 +32,7 @@ npm install -g add-cors-to-couchdb
 add-cors-to-couchdb
 
 # Install npm deps
-cd /vagrant/app
+cd app
 npm install
 
 # Populate the database

@@ -4,13 +4,15 @@
 
 var HTTP_PORT = 8001;
 
-var http_server = require('http-server');
 var fs = require('fs');
 var indexfile = './index.js';
 var dotfile = './.bundle.js';
 var outfile = './bundle.js';
 var watchify = require('watchify');
 var browserify = require('browserify');
+
+var express = require('express');
+var app = express();
 
 var useWatchify = true;
 
@@ -54,7 +56,20 @@ bundle();
 
 function startServers(callback) {
   readyCallback = callback;
-  http_server.createServer().listen(HTTP_PORT);
+
+  app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "http://couchdb-local.dev:8001");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    res.header("Access-Control-Allow-Credentials", "true");
+    next();
+  });
+
+  app.use(express.static('.'));
+
+  app.listen(HTTP_PORT, function () {
+    console.log('Listening on port ' + HTTP_PORT + '!');
+  });
+
   console.log('Tests: http://couchdb-local.dev:' + HTTP_PORT + '/index.html');
   serverStarted = true;
   checkReady();

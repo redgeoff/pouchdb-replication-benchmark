@@ -33,7 +33,7 @@ Install & Benchmark
 2. Set up
 
  * Edit /etc/hosts locally and add `192.168.50.8 couchdb-local.dev`
- * $ git clone ???
+ * $ git clone https://github.com/redgeoff/pouchdb-replication-benchmark.git
  * $ cd pouchdb-replication-benchmark
  * $ vagrant up
  * $ vagrant ssh
@@ -50,9 +50,11 @@ Install & Benchmark
  * Launch E2 ubuntu instance and make sure to allow access on ports 22 & 5984
  * ssh into instance
  * $ sudo apt-get install -y git
- * $ git clone ???
+ * $ git clone https://github.com/redgeoff/pouchdb-replication-benchmark.git
  * $ cd pouchdb-replication-benchmark
- * $ ./set-up.sh # This will populate the database
+ * $ sudo ./set-up.sh # This will populate the database
+ * $ cd app
+ * $ npm run server # starts web server for testing
  * Edit /etc/hosts locally and add `255.255.255.255 couchdb-remote.dev`. Replace 255.255.255.255 with the IP of your EC2 instance
 
 5. Run test against remote CouchDB instance
