@@ -20,7 +20,7 @@ NOTE: about bulk_get API in CouchDB and how this should compare to loading with 
 NOTE: After compaction, it takes 12 MB on the DB server to store these 10,000 docs.
 
 
-Install
+Install & Benchmark
 ---
 
 1. Install Vagrant, VirtualBox and git
@@ -30,39 +30,37 @@ Install
   * http://git-scm.com
 
 
-2. Set Up
+2. Set up
 
-  Edit /etc/hosts locally and add
-    192.168.50.8 couchdb-local.dev
-  $ git clone ???
-  $ cd pouchdb-replication-benchmark
-  $ vagrant up
-  $ vagrant ssh
+ * Edit /etc/hosts locally and add `192.168.50.8 couchdb-local.dev`
+ * $ git clone ???
+ * $ cd pouchdb-replication-benchmark
+ * $ vagrant up
+ * $ vagrant ssh
 
 
 3. Run test against local CouchDB instance
 
-  $ npm run server
-  Visit http://couchdb-local.dev:8001/index.html?grep=local. This page will output the time it takes to initially replicate the 10,000 docs in the browser when the CouchDB instance is local
+ * $ npm run server
+ * Visit http://couchdb-local.dev:8001/index.html?grep=local. This page will output the time it takes to initially replicate the 10,000 docs in the browser when the CouchDB instance is local
 
 
 4. Create remote CouchDB instance
 
-  Launch E2 ubuntu instance and make sure to allow access on ports 22 & 5984
-  ssh into instance
-  $ sudo apt-get install -y git
-  $ git clone ???
-  $ cd pouchdb-replication-benchmark
-  $ ./set-up.sh # This will populate the database
-  Edit /etc/hosts locally and add
-    255.255.255.255 couchdb-remote.dev # Replace 255.255.255.255 with the IP of your EC2 instance
+ * Launch E2 ubuntu instance and make sure to allow access on ports 22 & 5984
+ * ssh into instance
+ * $ sudo apt-get install -y git
+ * $ git clone ???
+ * $ cd pouchdb-replication-benchmark
+ * $ ./set-up.sh # This will populate the database
+ * Edit /etc/hosts locally and add `255.255.255.255 couchdb-remote.dev`. Replace 255.255.255.255 with the IP of your EC2 instance
 
 5. Run test against remote CouchDB instance
 
 Locally via your Vagrant env (similar to step 3):
 
-  $ npm run server
-  Visit http://couchdb-local.dev:8001/index.html?grep=remote. This page will output the time it takes to initially replicate the 10,000 docs in the browser when the CouchDB instance is remote
+ * $ npm run server
+ * Visit http://couchdb-local.dev:8001/index.html?grep=remote. This page will output the time it takes to initially replicate the 10,000 docs in the browser when the CouchDB instance is remote
 
 
 Optional: Fill and dump
@@ -72,5 +70,5 @@ Filling the database locally can take around an hour. As these tests focus on th
 
 If however, you wish to generate your own dump file you can do the following:
 
-  $ npm run fill # populates 10,000 docs that have each been updated 100 times. Takes an hr
-  $ npm run dump # dumps the 10,000 docs to dump.txt
+ * $ npm run fill # populates 10,000 docs that have each been updated 100 times. Takes an hr
+ * $ npm run dump # dumps the 10,000 docs to dump.txt
