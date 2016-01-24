@@ -1,0 +1,40 @@
+{
+  "name": "pouchdb-replication-benchmark",
+  "version": "0.0.1",
+  "description": "Benchmarks initial replication in PouchDB",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/redgeoff/pouchdb-replication-benchmark"
+  },
+  "keywords": [
+    "pouchdb",
+    "benchmark"
+  ],
+  "author": "Geoffrey Cox",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/redgeoff/pouchdb-replication-benchmark"
+  },
+  "scripts": {
+    "server": "./server.js",
+    "dump": "./node_modules/mocha/bin/_mocha dump.js",
+    "load": "./node_modules/mocha/bin/_mocha load.js",
+    "fill": "./node_modules/mocha/bin/_mocha fill.js"
+  },
+  "dependencies": {
+    "pouchdb": "^5.2.0",
+    "pouchdb-load": "^1.4.3",
+    "pouchdb-replication-stream": "^1.2.6"
+  },
+  "devDependencies": {
+    "browserify": "^12.0.1",
+    "chai": "^3.4.1",
+    "chai-as-promised": "^5.2.0",
+    "es5-shim": "^4.3.1",
+    "http-server": "^0.8.5",
+    "mocha": "^2.3.4",
+    "request": "^2.67.0",
+    "watchify": "^3.6.1"
+  }
+}
