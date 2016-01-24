@@ -47,7 +47,7 @@ Install & Benchmark
 
 4. Create remote CouchDB instance
 
- * Launch E2 ubuntu instance and make sure to allow access on ports 22 & 5984
+ * Launch E2 ubuntu instance and make sure to allow access on ports 22, 5984 & 8001
  * ssh into instance
  * $ sudo apt-get install -y git
  * $ git clone https://github.com/redgeoff/pouchdb-replication-benchmark.git
