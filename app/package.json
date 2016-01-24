@@ -23,6 +23,7 @@
     "fill": "./node_modules/mocha/bin/_mocha fill.js"
   },
   "dependencies": {
+    "express": "^4.13.4",
     "pouchdb": "^5.2.0",
     "pouchdb-load": "^1.4.3",
     "pouchdb-replication-stream": "^1.2.6"
