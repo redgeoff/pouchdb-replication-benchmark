@@ -24,6 +24,7 @@
   },
   "dependencies": {
     "express": "^4.13.4",
+    "express-pouchdb-replication-stream": "^1.0.6",
     "pouchdb": "^5.2.0",
     "pouchdb-load": "^1.4.3",
     "pouchdb-replication-stream": "^1.2.6"

@@ -61,6 +61,10 @@ module.exports = function (host) {
       return db.load('http://' + host + ':8001/dump.txt');
     });
 
+    it('initial replication of 10,000 docs via express-pouchdb-replication-stream', function () {
+      return db.load('http://' + host + ':8001/api/couchdb/todos');
+    });
+
   });
 
 };

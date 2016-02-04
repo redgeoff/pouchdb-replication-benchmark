@@ -9,7 +9,7 @@ PouchDB.adapter('writableStream', replicationStream.adapters.writableStream);
 
 describe('pouchdb', function () {
 
-  this.timeout(5000);
+  this.timeout(30000);
 
   it('load', function () {
     var db = new PouchDB('http://localhost:5984/todos');

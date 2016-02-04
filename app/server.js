@@ -14,6 +14,8 @@ var browserify = require('browserify');
 var express = require('express');
 var app = express();
 
+var repStream = require('express-pouchdb-replication-stream');
+
 var useWatchify = true;
 
 var b = browserify(indexfile, {
@@ -63,6 +65,14 @@ function startServers(callback) {
     res.header("Access-Control-Allow-Credentials", "true");
     next();
   });
+
+  // Use express-pouchdb-replication-stream to speed up the initial replication. This will no longer
+  // be needed with CouchDB 2.0 as CouchDB 2.0 contains the bulk_get API, which greatly speeds up
+  // the initial replication.
+  app.use('/api/couchdb/:db', repStream({
+    url     : 'http://localhost:5984/',
+    dbReq   : true
+  }));
 
   app.use(express.static('.'));
 
