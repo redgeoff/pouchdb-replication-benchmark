@@ -28,7 +28,7 @@ Notes:
 * The speed of the computer running the browser tests is probably not significant as the major cause of latency is in the transmission of data over the Internet and the chattiness of the replication protocol
 * The time it takes to replicate docs is directly related to the number of docs. This relationship should be linear so it is pretty safe to use this benchmarking to estimate your use case. For example, it should take roughly 50.9 seconds to sync 50,000 docs with pouchdb-load
 * After compaction, it takes 12 MB on the DB server to store these 10,000 docs.
-* In Chrome, it takes roughly 114 MB to store these 10,000 in IndexedDB storage
+* In Chrome, it takes roughly 140 MB to store these 10,000 in IndexedDB storage
 
 
 Install & Benchmark
