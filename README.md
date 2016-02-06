@@ -9,15 +9,26 @@ We will assume a data set of 10,000 docs, where each document has been updated 1
 
 Summary
 ---
-TODO: include graph of results
 
-NOTE: speed of computer running browser is probably not significant as the major cause of latency is in the transmission of data over the Internet
+##### CouchDB <2.0: 104 seconds to replicate 10,000 docs
+##### CouchDB >2.0: 5.9 seconds to replicate 10,000 docs
 
-NOTE: The time it takes to replicate docs is directly related to the number of docs. This relationship should be linear so it is pretty safe to use this benchmarking to estimate your use case. For example, it should take roughly ???? to sync 50,000 docs.
 
-NOTE: about bulk_get API in CouchDB and how this should compare to loading with pouchdb-load
+Initial Replication of 10,000 docs (Average of 3 trials):
+---
 
-NOTE: After compaction, it takes 12 MB on the DB server to store these 10,000 docs.
+| Local/Remote CouchDB | Native      | express-pouchdb-replication-stream  | pouchdb-load  |
+| -------------------- | ----------: | ----------------------------------: | ------------: |
+| Local                | 63.7 secs   | 32.9 secs                           | 5.7 secs      |
+| Remote               | 104.6 secs  | 38.2 secs                           | 5.9 secs      |
+
+
+Notes:
+* All tests were conducted with CouchDB 1.5. CouchDB >= 2.0 will contain the [bulk_get API](https://issues.apache.org/jira/browse/COUCHDB-2310), which will allow native initial replication to perform at speeds similar to the pouchdb-load trials above. In these trials, we use pouchdb-replication-stream to dump the database to a JSON file and then use pouchdb-load to perform the initial replication.
+* The speed of the computer running the browser tests is probably not significant as the major cause of latency is in the transmission of data over the Internet and the chattiness of the replication protocol
+* The time it takes to replicate docs is directly related to the number of docs. This relationship should be linear so it is pretty safe to use this benchmarking to estimate your use case. For example, it should take roughly 50.9 seconds to sync 50,000 docs with pouchdb-load
+* After compaction, it takes 12 MB on the DB server to store these 10,000 docs.
+* In Chrome, it takes roughly 114 MB to store these 10,000 in IndexedDB storage
 
 
 Install & Benchmark
